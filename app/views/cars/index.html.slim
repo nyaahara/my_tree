@@ -1,0 +1,23 @@
+table
+  thead
+    tr
+      th car
+      th price
+      th transmission
+      th year
+      th kilometres
+      th registered
+      th registration_expiry
+      th kilometres_per_year
+  tbody
+    - @cars.each do |car|
+      tr
+        td
+          = link_to "#{car.make}/#{car.model}/#{car.variant}", car.url, target: :_blank
+        td= car.price
+        td= car.transmission
+        td= car.year
+        td= car.kilometres
+        td= car.registered ? 'YES' : ''
+        td= car.registration_expiry
+        td= car.kilometres_per_year
