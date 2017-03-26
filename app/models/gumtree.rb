@@ -30,13 +30,19 @@ module Gumtree
     end
   end
 
-  class List < Base
+  class Resources < Base
+    def result
+      [@resource].concat document.css('.paginator__page-num').map { |a| a[:href] }.compact
+    end
+  end
+
+  class Resource < Base
     def result
       document.css('.ad-listing__thumb-link').map { |a| a[:href] }
     end
   end
 
-  class Page < Base
+  class Car < Base
     def result
       {
         url: url,
